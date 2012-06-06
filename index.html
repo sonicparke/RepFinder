@@ -11,52 +11,11 @@
     <script src="jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
 	<script src="jqvmap/maps/jquery.vmap.usa2.js" type="text/javascript"></script>
 	<script src="jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+	<script src="js/scripts.js" type="text/javascript"></script>
     
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$('#vmapWorld').vectorMap({
-		    map: 'world_en',
-		    backgroundColor: '#fff',
-		    color: '#f4f3f0',
-		    hoverOpacity: 0.7,
-		    selectedColor: '#666666',
-		    enableZoom: true,
-		    showTooltip: true,
-		    values: sample_data,
-		    scaleColors: ['#C8EEFF', '#006491'],
-		    normalizeFunction: 'polynomial',
-		    onRegionClick: function  (event, label, index) {
-		    	if(label === 'us') {
-		    		console.log('label is US: ' , label)
-		    		
-		    	} else {
-		    		console.log('label: ' , label)
-		    	}
-		    	
-		    }
-		});
-		$('#vmapUSA').vectorMap({
-		    map: 'usa_en',
-		    backgroundColor: '#fff',
-		    color: '#ffffff',
-		    hoverOpacity: 0.7,
-		    selectedColor: '#666666',
-		    enableZoom: true,
-		    showTooltip: true,
-		    values: sample_data,
-		    scaleColors: ['#C8EEFF', '#006491'],
-		    normalizeFunction: 'polynomial',
-		    selectedRegion: 'OK',
-		    onRegionClick: function  (event, label, index) {
-		    	if(label === 'us') {
-		    		console.log('label is US: ' , label)
-		    		
-		    	} else {
-		    		console.log('label: ' , label)
-		    	}
-		    	
-		    }
-		});
+		InitializeMaps();
 	});
 	</script>
 	<style>
