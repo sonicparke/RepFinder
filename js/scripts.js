@@ -2,8 +2,14 @@ function InitializeMaps(argument) {
 	var maps = {
 		primary:'world_en',
 		secondary:'usa_en',
-		thirdiary: 'usaCT_en'
+		thirdiary: 'usaCT_en',
+		fourthiary: 'usaPA_en'
 	}
+
+	// var thisRegion = $.each(rep_data_states, function  (key, value) {
+	//     				console.log(key)
+	//     			})
+
 
 	var currentMap = '#' + maps.primary;
 
@@ -25,7 +31,7 @@ function InitializeMaps(argument) {
 		    borderColor: '#c9c9c9',
 		    color: '#84bfda',
 		    hoverOpacity: 0.7,
-		    selectedColor: '#006491',
+		    selectedColor: '#84bfda',
 		    enableZoom: true,
 		    showTooltip: true,
 		    values: rep_data_global,
@@ -45,14 +51,41 @@ function InitializeMaps(argument) {
 		    borderWidth: 3,
 		    color: '#84bfda',
 		    hoverOpacity: 0.7,
-		    selectedColor: '#006491',
+		    selectedColor: '#84bfda',
 		    enableZoom: true,
 		    showTooltip: true,
 		    values: rep_data_states,
 		    scaleColors: ['#C8EEFF', '#006491'],
 		    normalizeFunction: 'polynomial',
 		    onRegionClick: function  (event, label, index) {
-	    		ShowSecondaryMap(maps.thirdiary, 'ct', label, maps);
+		    	if(label === 'ct') {
+		    		ShowSecondaryMap(maps.thirdiary, 'ct', label, maps);
+		    	} 
+		    	else if(label === 'pa') {
+		    		ShowSecondaryMap(maps.fourthiary, 'pa', label, maps);
+		    	} else {
+		    		var salesRep = '<p>' + index + '</p>';
+		    		$('#dialog').dialog({
+		    			position: { 
+					        my: 'center',
+					        at: 'center',
+					        of: $('.vmapContainer')
+					    },
+					    title: index
+	    			}).html(salesRep);
+	    			
+	    			// console.log(index)
+	    			for(var value in rep_data_states){
+	    				console.log(value)
+	    				// console.log(label)
+	    				if(key = label){
+		    				// console.log(key)
+		    			} else {
+		    				// console.log('looped but no label')
+		    			}
+	    			}
+	    			
+		    	}
 		    }
 		});
 
@@ -63,7 +96,31 @@ function InitializeMaps(argument) {
 		    borderWidth: 3,
 		    color: '#84bfda',
 		    hoverOpacity: 0.7,
-		    selectedColor: '#006491',
+		    selectedColor: '#84bfda',
+		    enableZoom: true,
+		    showTooltip: true,
+		    // values: rep_data,
+		    scaleColors: ['#C8EEFF', '#006491'],
+		    normalizeFunction: 'polynomial',
+		    onRegionClick: function  (event, label, index) {
+	    		$('#dialog').dialog({
+	    			position: { 
+				        my: 'center',
+				        at: 'center',
+				        of: $('.vmapContainer')
+				    }
+	    		});
+		    }
+		});
+
+		$('#' + maps.fourthiary).vectorMap({
+		    map: maps.fourthiary,
+		    backgroundColor: '#fff',
+		    borderColor: '#c9c9c9',
+		    borderWidth: 3,
+		    color: '#84bfda',
+		    hoverOpacity: 0.7,
+		    selectedColor: '#84bfda',
 		    enableZoom: true,
 		    showTooltip: true,
 		    // values: rep_data,

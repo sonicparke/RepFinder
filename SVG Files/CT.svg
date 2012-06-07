@@ -3,15 +3,8 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="959px" height="593px" viewBox="0 0 959 593" enable-background="new 0 0 959 593" xml:space="preserve">
-<path id="jqvmap1_ctsw" fill="#FFFFFF" stroke="#BCBEC0" stroke-miterlimit="10" stroke-opacity="0.25" d="M487.5,239.333
-	l-240.675,90.388c6.369,61.071,8.054,124.085,5.238,185.235c-52.402,86.006,52.207,47.598,79.395-4.199
-	c41.816-37.803,83.809-74.199,119.805-117.598c16.711,10.955,35.6,6.898,55.7-1.258L487.5,239.333z"/>
-<path id="jqvmap1_ctse" fill="#FFFFFF" stroke="#BCBEC0" stroke-miterlimit="10" stroke-opacity="0.25" d="M510.667,390.5
-	c27.836-12.104,59.839-30.983,89.403-26.539c59.59-13.604,113.789-44.805,171.191-65.205
-	c-12.374-50.232-24.687-102.404-37.003-152.583l-242.197,90.995L510.667,390.5z"/>
-<path id="jqvmap1_ctne" fill="#FFFFFF" stroke="#BCBEC0" stroke-miterlimit="10" stroke-opacity="0.25" d="M490.667,230
-	l241.107-91.946c-9.757-39.749-19.52-79.504-29.321-119.298c-28.398,5.605-56.582,11.201-85,16.807h0.215
-	C562.848,47.78,506.949,60.271,452.167,72.5L490.667,230z"/>
-<path id="jqvmap1_ctnw" fill="#FFFFFF" stroke="#BCBEC0" stroke-miterlimit="10" stroke-opacity="0.25" d="M446.921,73.646
-	c-81.206,18.13-162.396,36.289-243.648,54.514c22.111,63.179,35.913,128.589,43.339,194.776l239.605-91.308L446.921,73.646z"/>
+<path id="jqvmap1_ctsw" fill="#FFFFFF" stroke="#BCBEC0" stroke-miterlimit="10" stroke-opacity="0.25" d="M498.515,240.542l-254.223,38.273c-6.492,61.059-17.969,123.041-33.461,182.264c-69.167,73.204,41.147,57.428,78.528,12.431c48.773-28.264,97.426-55.115,141.672-90.063c14.063,14.195,33.383,14.161,54.741,10.371L498.515,240.542z"/>
+<path id="jqvmap1_ctse" fill="#FFFFFF" stroke="#BCBEC0" stroke-miterlimit="10" stroke-opacity="0.25" d="M489.687,393.219c29.746-6.04,64.979-17.839,92.97-7.334c61.116-0.894,120.626-20.12,181.018-28.117c-1.64-51.707-2.814-105.299-4.408-156.943l-255.839,38.55L489.687,393.219z"/>
+<path id="jqvmap1_ctne" fill="#FFFFFF" stroke="#BCBEC0" stroke-miterlimit="10" stroke-opacity="0.25" d="M503.557,232.073l254.971-39.707c-1.265-40.91-2.532-81.827-3.829-122.789c-28.942-0.434-57.674-0.831-86.636-1.267l0.21,0.044c-56.163,0.53-113.438,1.104-169.564,1.654L503.557,232.073z"/>
+<path id="jqvmap1_ctnw" fill="#FFFFFF" stroke="#BCBEC0" stroke-miterlimit="10" stroke-opacity="0.25" d="M493.338,70.037c-83.201,0.817-166.393,1.667-249.659,2.567c8.466,66.399,8.34,133.249,1.817,199.531l253.368-39.396L493.338,70.037z"/>
 </svg>

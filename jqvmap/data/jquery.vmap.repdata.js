@@ -46,6 +46,7 @@ var rep_data_states = {
 	"oh" : eadsHouston,
 	"ok" : eadsTulsa,
 	"or" : eadsHouston,
+	"pa" : eadsHouston,
 	"pae" : eadsHouston,
 	"paw" : eadsHouston,
 	"ri" : eadsHouston,
