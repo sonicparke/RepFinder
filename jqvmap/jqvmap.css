@@ -25,25 +25,74 @@
 {
 	position: absolute;
 	left: 10px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	background: #000000;
-	padding: 3px;
+	display: block;
+	-webkit-border-radius:5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: transparent;
+	padding: 0px;
 	color: white;
-	width: 10px;
-	height: 10px;
+	width: 25px;
+	height: 25px;
 	cursor: pointer;
-	line-height: 10px;
+	line-height: 15px;
 	text-align: center;
+	text-indent: -99999px;
 }
 .jqvmap-zoomin
 {
 	top: 10px;
+	background: url('icn-sprite-maps.png') no-repeat 0 -24px;
+	width: 17px;
+	height: 17px;
+	-moz-box-shadow: 1px 1px 5px #666666;
+	-webkit-box-shadow: 1px 1px 5px #666666;
+	box-shadow: 1px 1px 5px #666666;
 }
 .jqvmap-zoomout
 {
-	top: 30px;
+	top: 35px;
+	background: url('icn-sprite-maps.png') no-repeat 0 -72px;
+	width: 17px;
+	height: 17px;
+	-moz-box-shadow: 1px 1px 5px #666666;
+	-webkit-box-shadow: 1px 1px 5px #666666;
+	box-shadow: 1px 1px 5px #666666;
+}
+.jqvmap-zoomin:hover
+{
+	background: url('icn-sprite-maps.png') no-repeat 0 0;
+	width: 17px;
+	height: 17px;
+}
+.jqvmap-zoomout:hover
+{
+	background: url('icn-sprite-maps.png') no-repeat 0 -48px;
+	width: 17px;
+	height: 17px;
+}
+.jqvmap-zoomin:active
+{
+	top: 11px;
+}
+.jqvmap-zoomout:active
+{
+	top: 36px;
+}
+#close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: url('icn-sprite-maps.png') no-repeat 0 -120px;
+	width: 17px;
+	height: 17px;
+	text-indent: -99999px;
+	-moz-box-shadow: 1px 1px 5px #666666;
+	-webkit-box-shadow: 1px 1px 5px #666666;
+	box-shadow: 1px 1px 5px #666666;
+	-webkit-border-radius:5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 .jqvmap-region
 {

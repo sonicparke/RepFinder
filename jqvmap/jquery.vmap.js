@@ -520,8 +520,8 @@
 
 	  for (var key in mapData.pathes)
       {
-		map.countries[key].currentFillColor = map.countries[key].getOriginalFill();
-        map.countries[key].setFill(map.countries[key].getOriginalFill());
+		// map.countries[key].currentFillColor = map.countries[key].getOriginalFill();
+  //       map.countries[key].setFill(map.countries[key].getOriginalFill());
       }
 
       var path = e.target;
