@@ -6,43 +6,33 @@
     
     <link href="jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="js/jquery-ui/css/custom-theme/jquery-ui-1.8.18.custom.css" rel="stylesheet" type="text/css" />
-    
-	<style>
-	.vmapContainer {
-		position: relative;
-		margin: 50px auto;
-		width: 549px;
-		height: 440px;
-		border: 1px solid #999;
-	}
-	.vmap {
-		margin: 0;
-		width: 549px;
-		height: 440px;
-	}
-	#jqvmap2_paw, #jqvmap2_pae {
-		stroke-width: 0 !important;
-	}
-	
-	#dialog {
-		display: none;
-		color: #272727;
-	}
-	</style>
+    <link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
+
   </head>
   <body>
   	<div class="vmapContainer">
 	    <div id="world_en" class="vmap"></div>
-	    <div id="usa_en" class="vmap"><a id="close" class="button" href="#">Close</a></div>
-	    <div id="usaCT_en" class="vmap"><a id="close" class="button" href="#">Close</a></div>
-	    <div id="usaPA_en" class="vmap"><a id="close" class="button" href="#">Close</a></div>
+	    <div id="usa_en" class="vmap"><a  class="close button" href="#">Close</a></div>
+      <div id="usaIA_en" class="vmap"><a  class="close button" href="#">Close</a></div>
+      <div id="usaNY_en" class="vmap"><a  class="close button" href="#">Close</a></div>
+      <div id="usaNJ_en" class="vmap"><a  class="close button" href="#">Close</a></div>
+      <div id="usaPA_en" class="vmap"><a  class="close button" href="#">Close</a></div>
     </div>
     <div id="dialog">
-    	<h2>popup</h2>
+    	<div id="dialogTemplateArea">
+    	</div>
     </div>
+    <script id="dialogTemplate" type="text/x-jQuery-tmpl">
+	    <ul id="repDataList">
+	        <li class='listItem name'>{{name}}</li>
+          <li class='listItem email'><a href="mailto:{{email}}" >{{email}}</a></li>
+          <li class='listItem phone'>{{phone}}</li>
+		</ul>
+    </script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script src="js/jquery-ui/js/jquery-ui-1.8.21.custom.min.js"charset="ISO-8859-1" type="text/javascript"></script>
+    <script type="text/javascript" src="js/handlebars-1.0.0.beta.6.js"></script>
     <script src="jqvmap/jquery.vmap.js" type="text/javascript"></script>
     <script src="jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
 	<script src="jqvmap/maps/jquery.vmap.usaStates.js" type="text/javascript"></script>

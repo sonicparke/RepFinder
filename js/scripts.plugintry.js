@@ -1,31 +1,45 @@
 function InitializeMaps(argument) {
-	var maps = {
-		primary:'world_en',
-		secondary:'us',
-		thirdiary: 'ge'
-	}
+	var maps = [
+		{
+			name:'world_en',
+			code: 'world'
+		},{
+			name:'usa_en',
+			code: 'us'
 
-	var options = {
+		},{
+			name:'usaCT_en',
+			code: 'ct'
+		},{
+			name:'usaPA_en',
+			code: 'pa'
+		}
+	]
 
-	}
 
 
-	var currentMap = '#' + maps.primary;
-	$('.vmap').each(function() {
-	   if($(this).is(currentMap)) {
-	     $(this).show();
+	var currentMap = '#' + maps[0].name;
+	// console.log(currentMap)
+	jQuery('.vmap').each(function() {
+	   if(jQuery(this).is(currentMap)) {
+	     jQuery(this).show();
 	   } else {
-	     $(this).hide();
+	     jQuery(this).hide();
 	   }
 	});
 
-	$('.vmapContainer').on('click', '#close', function (e) {
-		$(this).closest('.vmap').fadeOut();
+	jQuery('.vmapContainer').on('click', '#close', function (e) {
+		jQuery(this).closest('.vmap').fadeOut();
+		e.preventDefault();
+		e.stopPropagation();
 	})
 
 
-	$(currentMap).vectorMap({
-		    map: maps.primary,
+	jQuery.each(maps, function (i) {
+		var rep_values = 'rep_values_' + maps[i].code;
+		console.log(rep_values)
+		jQuery('#' + maps[i].name).vectorMap({
+		    map: maps[i].name,
 		    backgroundColor: '#fff',
 		    borderColor: '#c9c9c9',
 		    color: '#84bfda',
@@ -33,130 +47,64 @@ function InitializeMaps(argument) {
 		    selectedColor: '#006491',
 		    enableZoom: true,
 		    showTooltip: true,
-		    values: sample_data,
+		    values: rep_values,
 		    scaleColors: ['#C8EEFF', '#006491'],
 		    normalizeFunction: 'polynomial',
 		    onRegionClick: function  (event, label, index) {
-		    	LoadMap(maps.secondary, label, maps);
+		    	ShowSecondaryMap(label, maps[i], index);
 		    }
 		});
+	})
+	
 
 		
-		
-		// $('#' + maps.secondary).vectorMap({
-		//     map: maps.secondary,
-		//     backgroundColor: '#fff',
-		//     borderColor: '#c9c9c9',
-		//     borderWidth: 3,
-		//     color: '#84bfda',
-		//     hoverOpacity: 0.7,
-		//     selectedColor: '#006491',
-		//     enableZoom: true,
-		//     showTooltip: true,
-		//     values: sample_data,
-		//     scaleColors: ['#C8EEFF', '#006491'],
-		//     normalizeFunction: 'polynomial',
-		//     // selectedRegion: 'OK',
-		//     onRegionClick: function  (event, label, index) {
-	 //    		// ShowSecondaryMap(maps.thirdiary, 'ct', label, maps);
-	 //    		LoadMap(maps.thirdiary, 'ct', label, maps);
-		//     }
-		// });
-
-		// $('#' + maps.thirdiary).vectorMap({
-		//     map: maps.thirdiary,
-		//     backgroundColor: '#fff',
-		//     borderColor: '#c9c9c9',
-		//     borderWidth: 3,
-		//     color: '#84bfda',
-		//     hoverOpacity: 0.7,
-		//     selectedColor: '#006491',
-		//     enableZoom: true,
-		//     showTooltip: true,
-		//     // values: sample_data,
-		//     scaleColors: ['#C8EEFF', '#006491'],
-		//     normalizeFunction: 'polynomial',
-		//     // selectedRegion: 'OK',
-		//     onRegionClick: function  (event, label, index) {
-	 //    		$('#dialog').dialog({
-	 //    			position: { 
-		// 		        my: 'center',
-		// 		        at: 'center',
-		// 		        of: $('.vmapContainer')
-		// 		    }
-	 //    		});
-		//     }
-		// });
+	
 		
 }
 
-// function ShowSecondaryMap (id, code, label, maps) {
-// 	if(label === code) {
-//     		$('#' + id).fadeIn().css({'position': 'absolute', 'top': 0, 'left': 0});
-//     	} else {
-//     		$('#' + id).fadeOut();
-//     		$('#dialog').dialog({
-//     			modal: true,
-//     			position: { 
-// 			        my: 'center',
-// 			        at: 'center',
-// 			        of: $('.vmapContainer')
-// 			    }
-//     		});
-//     	}
+function ShowSecondaryMap (label, maps, index) {
+	console.log(label, maps, maps.name, maps.code)
+
+	if(label === 'us') {
+		jQuery('#usa_en').fadeIn().css({'position': 'absolute', 'top': 0, 'left': 0});
+	}
+	else if(label === 'ct') {
+    	jQuery('#usaCT_en').fadeIn().css({'position': 'absolute', 'top': 0, 'left': 0});
+	}
+	else if(label === 'pa') {
+    	jQuery('#usaPA_en').fadeIn().css({'position': 'absolute', 'top': 0, 'left': 0});
+	}
+	else {
+		ShowDialog(index, label);
+	}
 	
-// }
+}
 
-function LoadMap (id, label, maps) {
-	if(label === id) {
-			$('#' + id).vectorMap({
-			    map: id,
-			    backgroundColor: '#fff',
-			    borderColor: '#c9c9c9',
-			    borderWidth: 3,
-			    color: '#84bfda',
-			    hoverOpacity: 0.7,
-			    selectedColor: '#006491',
-			    enableZoom: true,
-			    showTooltip: true,
-			    // values: sample_data,
-			    scaleColors: ['#C8EEFF', '#006491'],
-			    normalizeFunction: 'polynomial',
-			    // selectedRegion: 'OK',
-			    onRegionClick: function  (e, label, index) {
-			    	if(e.target = maps.thirdiary){
-			    		console.log(e.target)
-			    		// console.log(id)
-			    		LoadMap(maps.thirdiary, label, maps);
-			    	} else if(id = maps.thirdiary) {
-			    		console.log(id)
-			    		console.log('thirdiary')
-			    	} else {
-			    		console.log('else')
-			    	// LoadMap(maps.thirdiary, label, maps);
-			    		$('#dialog').dialog({
-			    			position: { 
-						        my: 'center',
-						        at: 'center',
-						        of: $('.vmapContainer')
-						    }
-			    		});
-					}
-			    }
-			});
+function ShowDialog (index, label) {
+	jQuery('#dialog').dialog({
+		position: { 
+	        my: 'center',
+	        at: 'center',
+	        of: jQuery('.vmapContainer')
+	    },
+	    title: index
+	}).html(RenderTemplate(rep_data_us[label], 'dialog'));
+}
 
-    		$('#' + id).fadeIn().css({'position': 'absolute', 'top': 0, 'left': 0});
-    	} else {
-    		$('#' + id).fadeOut();
-    		$('#dialog').dialog({
-    			modal: true,
-    			position: { 
-			        my: 'center',
-			        at: 'center',
-			        of: $('.vmapContainer')
-			    }
-    		});
-    	}
 
+// RENDERS THE HANDLEBARS TEMPLATE
+function RenderTemplate (data, templateId, renderToId, callback) {
 	
+	if(renderToId){
+		var source = $("#" + templateId + "Template").html(); //GET THE HTML TEMPLATE
+		var template = Handlebars.compile(source); //COMPILE THE TEMPLATE
+		$("#" + renderToId + "TemplateArea").html(template(data)); //ADD THE TEMPLATE TO THE TEMPATE AREA
+	} else {
+		var source = $("#" + templateId + "Template").html(); //GET THE HTML TEMPLATE
+		var template = Handlebars.compile(source); //COMPILE THE TEMPLATE
+		$("#" + templateId + "TemplateArea").html(template(data)); //ADD THE TEMPLATE TO THE TEMPATE AREA
+	};
+	if(callback){
+		console.log('callback')
+	}
 }

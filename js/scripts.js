@@ -1,32 +1,31 @@
 function InitializeMaps(argument) {
 	var maps = {
-		primary:'world_en',
-		secondary:'usa_en',
-		thirdiary: 'usaCT_en',
-		fourthiary: 'usaPA_en'
+		WORLD:'world_en',
+		US:'usa_en',
+		IA: 'usaIA_en',
+		NY: 'usaNY_en',
+		NJ: 'usaNJ_en',
+		PA: 'usaPA_en'
 	}
 
-	// var thisRegion = $.each(rep_data_states, function  (key, value) {
-	//     				console.log(key)
-	//     			})
+	var currentMap = '#' + maps.WORLD;
 
-
-	var currentMap = '#' + maps.primary;
-
-	$('.vmap').each(function() {
-	   if($(this).is(currentMap)) {
-	     $(this).show();
+	jQuery('.vmap').each(function() {
+	   if(jQuery(this).is(currentMap)) {
+	     jQuery(this).show();
 	   } else {
-	     $(this).hide();
+	     jQuery(this).hide();
 	   }
 	});
 
-	$('.vmapContainer').on('click', '#close', function (e) {
-		$(this).closest('.vmap').fadeOut();
+	jQuery('.vmapContainer').on('click', '.close', function (e) {
+		jQuery(this).closest('.vmap').fadeOut();
+		e.preventDefault();
+		e.stopPropagation();
 	})
 
-	$('#' + maps.primary).vectorMap({
-		    map: maps.primary,
+	jQuery('#' + maps.WORLD).vectorMap({
+		    map: maps.WORLD,
 		    backgroundColor: '#fff',
 		    borderColor: '#c9c9c9',
 		    color: '#84bfda',
@@ -34,18 +33,33 @@ function InitializeMaps(argument) {
 		    selectedColor: '#84bfda',
 		    enableZoom: true,
 		    showTooltip: true,
-		    values: rep_data_global,
+		    values: rep_values_world,
 		    scaleColors: ['#C8EEFF', '#006491'],
 		    normalizeFunction: 'polynomial',
 		    onRegionClick: function  (event, label, index) {
-		    	ShowSecondaryMap(maps.secondary, 'us', label, maps);
+		    	if(label === 'us') {
+		    		ShowMap(maps.US, 'us', label, maps);
+		    	}
+		    	else {
+		    		// ShowDialog(index, label, 'world');
+		    		jQuery('#dialog').dialog({
+						position: { 
+					        my: 'center',
+					        at: 'center',
+					        of: jQuery('.vmapContainer')
+					    },
+					    title: index,
+					    resizable: false
+					}).html(RenderTemplate(rep_data_world[label], 'dialog'));
+		    	}
+		    	
 		    }
 		});
 
 		
 		
-		$('#' + maps.secondary).vectorMap({
-		    map: maps.secondary,
+		jQuery('#' + maps.US).vectorMap({
+		    map: maps.US,
 		    backgroundColor: '#fff',
 		    borderColor: '#c9c9c9',
 		    borderWidth: 3,
@@ -54,43 +68,40 @@ function InitializeMaps(argument) {
 		    selectedColor: '#84bfda',
 		    enableZoom: true,
 		    showTooltip: true,
-		    values: rep_data_states,
+		    values: rep_values_us,
 		    scaleColors: ['#C8EEFF', '#006491'],
 		    normalizeFunction: 'polynomial',
 		    onRegionClick: function  (event, label, index) {
-		    	if(label === 'ct') {
-		    		ShowSecondaryMap(maps.thirdiary, 'ct', label, maps);
-		    	} 
+		    	if(label === 'ny') {
+		    		ShowMap(maps.NY, 'ny', label, maps);
+		    	}
+		    	else if(label === 'ia') {
+		    		ShowMap(maps.IA, 'ia', label, maps);
+		    	}
+		    	else if(label === 'nj') {
+		    		ShowMap(maps.NJ, 'nj', label, maps);
+		    	}
 		    	else if(label === 'pa') {
-		    		ShowSecondaryMap(maps.fourthiary, 'pa', label, maps);
-		    	} else {
-		    		var salesRep = '<p>' + index + '</p>';
-		    		$('#dialog').dialog({
-		    			position: { 
+		    		ShowMap(maps.PA, 'pa', label, maps);
+		    	}
+		    	else {
+		    		// ShowDialog(index, label, 'us');
+		    		jQuery('#dialog').dialog({
+						position: { 
 					        my: 'center',
 					        at: 'center',
-					        of: $('.vmapContainer')
+					        of: jQuery('.vmapContainer')
 					    },
-					    title: index
-	    			}).html(salesRep);
-	    			
-	    			// console.log(index)
-	    			for(var value in rep_data_states){
-	    				console.log(value)
-	    				// console.log(label)
-	    				if(key = label){
-		    				// console.log(key)
-		    			} else {
-		    				// console.log('looped but no label')
-		    			}
-	    			}
-	    			
+					    title: index,
+					    resizable: false
+					}).html(RenderTemplate(rep_data_us[label], 'dialog'));
 		    	}
 		    }
 		});
 
-		$('#' + maps.thirdiary).vectorMap({
-		    map: maps.thirdiary,
+
+		jQuery('#' + maps.IA).vectorMap({
+		    map: maps.IA,
 		    backgroundColor: '#fff',
 		    borderColor: '#c9c9c9',
 		    borderWidth: 3,
@@ -99,22 +110,25 @@ function InitializeMaps(argument) {
 		    selectedColor: '#84bfda',
 		    enableZoom: true,
 		    showTooltip: true,
-		    // values: rep_data,
+		    values: rep_values_us_IA,
 		    scaleColors: ['#C8EEFF', '#006491'],
 		    normalizeFunction: 'polynomial',
 		    onRegionClick: function  (event, label, index) {
-	    		$('#dialog').dialog({
-	    			position: { 
+	    		// ShowDialog(index, label, 'us_IA');
+	    		jQuery('#dialog').dialog({
+					position: { 
 				        my: 'center',
 				        at: 'center',
-				        of: $('.vmapContainer')
-				    }
-	    		});
+				        of: jQuery('.vmapContainer')
+				    },
+				    title: index,
+					resizable: false
+				}).html(RenderTemplate(rep_data_us_IA[label], 'dialog'));
 		    }
 		});
 
-		$('#' + maps.fourthiary).vectorMap({
-		    map: maps.fourthiary,
+		jQuery('#' + maps.NY).vectorMap({
+		    map: maps.NY,
 		    backgroundColor: '#fff',
 		    borderColor: '#c9c9c9',
 		    borderWidth: 3,
@@ -123,35 +137,111 @@ function InitializeMaps(argument) {
 		    selectedColor: '#84bfda',
 		    enableZoom: true,
 		    showTooltip: true,
-		    // values: rep_data,
+		    values: rep_values_us_NY,
 		    scaleColors: ['#C8EEFF', '#006491'],
 		    normalizeFunction: 'polynomial',
 		    onRegionClick: function  (event, label, index) {
-	    		$('#dialog').dialog({
-	    			position: { 
+	    		// ShowDialog(index, label, 'us_IA');
+	    		jQuery('#dialog').dialog({
+					position: { 
 				        my: 'center',
 				        at: 'center',
-				        of: $('.vmapContainer')
-				    }
-	    		});
+				        of: jQuery('.vmapContainer')
+				    },
+				    title: index,
+					resizable: false
+				}).html(RenderTemplate(rep_data_us_NY[label], 'dialog'));
+		    }
+		});
+
+		jQuery('#' + maps.NJ).vectorMap({
+		    map: maps.NJ,
+		    backgroundColor: '#fff',
+		    borderColor: '#c9c9c9',
+		    borderWidth: 3,
+		    color: '#84bfda',
+		    hoverOpacity: 0.7,
+		    selectedColor: '#84bfda',
+		    enableZoom: true,
+		    showTooltip: true,
+		    values: rep_values_us_NJ,
+		    scaleColors: ['#C8EEFF', '#006491'],
+		    normalizeFunction: 'polynomial',
+		    onRegionClick: function  (event, label, index) {
+	    		// ShowDialog(index, label, 'us_IA');
+	    		jQuery('#dialog').dialog({
+					position: { 
+				        my: 'center',
+				        at: 'center',
+				        of: jQuery('.vmapContainer')
+				    },
+				    title: index,
+					resizable: false
+				}).html(RenderTemplate(rep_data_us_NJ[label], 'dialog'));
+		    }
+		});
+
+		jQuery('#' + maps.PA).vectorMap({
+		    map: maps.PA,
+		    backgroundColor: '#fff',
+		    borderColor: '#c9c9c9',
+		    borderWidth: 3,
+		    color: '#84bfda',
+		    hoverOpacity: 0.7,
+		    selectedColor: '#84bfda',
+		    enableZoom: true,
+		    showTooltip: true,
+		    values: rep_values_us_PA,
+		    scaleColors: ['#C8EEFF', '#006491'],
+		    normalizeFunction: 'polynomial',
+		    onRegionClick: function  (event, label, index) {
+	    		// ShowDialog(index, label, 'us_IA');
+	    		jQuery('#dialog').dialog({
+					position: { 
+				        my: 'center',
+				        at: 'center',
+				        of: jQuery('.vmapContainer')
+				    },
+				    title: index,
+					resizable: false
+				}).html(RenderTemplate(rep_data_us_PA[label], 'dialog'));
 		    }
 		});
 		
 }
 
-function ShowSecondaryMap (id, code, label, maps) {
-	if(label === code) {
-    		$('#' + id).fadeIn().css({'position': 'absolute', 'top': 0, 'left': 0});
-    	} else {
-    		$('#' + id).fadeOut();
-    		$('#dialog').dialog({
-    			modal: true,
-    			position: { 
-			        my: 'center',
-			        at: 'center',
-			        of: $('.vmapContainer')
-			    }
-    		});
-    	}
-	
+function ShowMap (id, code, label, maps) {
+    		jQuery('#' + id).fadeIn().css({'position': 'absolute', 'top': 0, 'left': 0});
+    		jQuery('.close').show();
 }
+
+function ShowDialog (index, label, code) {
+	var data = rep_data_ + code;
+	// console.log('rep_data_' + code + [label] )
+	console.log(rep_data_us[label])
+	jQuery('#dialog').dialog({
+		position: { 
+	        my: 'center',
+	        at: 'center',
+	        of: jQuery('.vmapContainer')
+	    },
+	    title: index,
+		resizable: false
+	}).html(RenderTemplate('rep_data_' + code + [label], 'dialog'));
+}
+
+	// RENDERS THE HANDLEBARS TEMPLATE
+	function RenderTemplate (data, templateId, renderToId, callback) {
+		if(renderToId){
+			var source = jQuery("#" + templateId + "Template").html(); //GET THE HTML TEMPLATE
+			var template = Handlebars.compile(source); //COMPILE THE TEMPLATE
+			jQuery("#" + renderToId + "TemplateArea").html(template(data)); //ADD THE TEMPLATE TO THE TEMPATE AREA
+		} else {
+			var source = jQuery("#" + templateId + "Template").html(); //GET THE HTML TEMPLATE
+			var template = Handlebars.compile(source); //COMPILE THE TEMPLATE
+			jQuery("#" + templateId + "TemplateArea").html(template(data)); //ADD THE TEMPLATE TO THE TEMPATE AREA
+		};
+		if(callback){
+			console.log('callback')
+		}
+	}

@@ -1,0 +1,65 @@
+.vmapContainer {
+		position: relative;
+		margin: 50px auto;
+		width: 549px;
+		height: 440px;
+	}
+	.vmap {
+		margin: 0;
+		width: 549px;
+		height: 440px;
+	}
+	#jqvmap2_paw, #jqvmap2_pae {
+		stroke-width: 0 !important;
+	}
+	
+	#dialog {
+		display: none;
+		color: #272727;
+	}
+
+	.ui-dialog-title {
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	ul#repDataList {
+		margin: 0;
+		padding: 0 0 0 1em; 
+		list-style-type: none;
+		font-size: 16px;
+		text-align: left;
+	}
+
+	ul#repDataList li {
+		padding: 0;
+		line-height: 1.5;
+	}
+
+	ul#repDataList li a {
+		color: #006491;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	ul#repDataList li a:hover {
+		text-decoration: underline;
+	}
+
+	ul#repDataList li.name {
+		font-weight: bold;
+	}
+
+	ul#repDataList li.email {
+		padding-left: 22px;
+		background: url('../images/icn-sprite-contact.png') no-repeat 0 10px;
+	}
+
+	ul#repDataList li.phone {
+		padding-left: 22px;
+		background: url('../images/icn-sprite-contact.png') no-repeat 0 -18px;
+	}
+
+	.jqvmap-label {
+		font-size: 11px !important;
+	}

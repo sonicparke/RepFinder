@@ -474,7 +474,7 @@
       code = e.target.id.split('_').pop(),
       labelShowEvent = $.Event('labelShow.jqvmap'),
       regionMouseOverEvent = $.Event('regionMouseOver.jqvmap');
-
+      
       if (e.type == 'mouseover')
       {
         jQuery(params.container).trigger(regionMouseOverEvent, [code, mapData.pathes[code].name]);
@@ -518,19 +518,32 @@
 
     jQuery(params.container).delegate(this.canvas.mode == 'svg' ? 'path' : 'shape', 'click', function (e){
 
-	  for (var key in mapData.pathes)
-      {
-		// map.countries[key].currentFillColor = map.countries[key].getOriginalFill();
-  //       map.countries[key].setFill(map.countries[key].getOriginalFill());
-      }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//    COMMENTED OUT TO PREVENT SELECTION HIGHLIGHT ON CLICK
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	  // for (var key in mapData.pathes)
+   //    {
+
+   //      // HAD TO WRAP THIS IN BROWSER DETECT IF STATEMENT SINCE IE8 CRAPS OUT BECAUSE OF IT
+   //      if(jQuery.browser.msie) {
+
+   //      } else {
+   //        map.countries[key].currentFillColor = map.countries[key].getOriginalFill();
+   //        map.countries[key].setFill(map.countries[key].getOriginalFill());
+   //      }
+        
+   //    }
+
+      // path.currentFillColor = params.selectedColor;
+   //    path.setFill(params.selectedColor);
 
       var path = e.target;
       var code = e.target.id.split('_').pop();
 
       jQuery(params.container).trigger('regionClick.jqvmap', [code, mapData.pathes[code].name]);
 
-	  path.currentFillColor = params.selectedColor;
-      path.setFill(params.selectedColor);
+
 
     });
 
